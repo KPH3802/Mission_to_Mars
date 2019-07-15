@@ -133,7 +133,7 @@ def scrape():
     mission_to_mars_dict["hemi_image_dict"] = hemisphere_image_urls
     
     
-
+    browser.quit()
 
 
     return render_template("index.html", dict=player_dictionary)
