@@ -1,7 +1,7 @@
 
 
 # Import dependencies
-def scrape(:)
+def scrape():
 
     from bs4 import BeautifulSoup
     import requests
