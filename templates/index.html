@@ -40,19 +40,26 @@
       <div class="col-md-4">
         <h5 class="heading">Current Weather on Mars</h5>
         <p>{{data.mars_weather}}</p>
-        <h5 class =" heading">Mars Facts</h5>
+        <h5 class=" heading">Mars Facts</h5>
         <table>{{data.table_html_string|safe}}</table>
       </div>
     </div>
   </div>
   <hr>
-    <div class="row">
-      <div class=col-md-5>
-          {% for item in data.hemi_image_dict %}
+  <div class="row">
+    <div class=col-md-12>
+      {% for item in data.hemi_image_dict %}
+      <div class="col-md-6">
+
+      <div class="thumbnail">
         <img src="{{item.img_url}}" alt="Hemi Image">
+        <div class="caption">
+        <p>{{item.img_title}}</p>
       </div>
-      {% endfor %}
     </div>
+  </div>
+    {% endfor %}
+  </div>
   </div>
 </body>
 
