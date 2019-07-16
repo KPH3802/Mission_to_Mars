@@ -14,17 +14,41 @@
 
     <div class="jumbotron text-center">
       <h1>Mission to Mars</h1>
-      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape new data</a></p>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" target="blank" role="button">Scrape new data</a></p>
     </div>
-
-    <!-- Craigslist Listings -->
-    <div class="row" id="craiglist-listings">
+    <div class="row">
       <div class="col-md-12">
-        <h4 class="heading">{{data.news_title}}</h4>
-        <small></small>
+        <h3 class="heading">Latest Mars News</h3>
       </div>
     </div>
 
+    <div class="row">
+      <div class="col-md-12">
+        <h4 class="heading">{{data.news_title}}</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <p>{{data.news_p}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <h3 class="heading">Featured Mars Image</h3>
+        <img src="{{data.featured_image_url" alt="Featured Image">
+      </div>
+      <div class="col-md-4">
+        <h5 class="heading">Current Weather on Mars</h5>
+        <p>{{data.mars_weather}}</p>
+        <h5 class =" heading">Mars Facts</h5>
+        <p>{{data.table_html_string}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class-md-5>
+        <img src="{{data.hemi_image_dict}}" alt="Hemi Image">
+      </div>
+    </div>
   </div>
 </body>
 
