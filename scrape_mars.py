@@ -1,32 +1,15 @@
-
-# import necessary libraries
-from flask import Flask, render_template
-
-# create instance of Flask app
-app = Flask(__name__)
-
-
-# create route that renders index.html template
-@app.route("/")
-def index():
-    player_dictionary = {"player_1": "Jessica",
-                         "player_2": "Mark"}
-    return render_template("index.html", dict=player_dictionary)
-
-
-
-# Import dependencies
 def scrape():
     mission_to_mars_dict = {}
 
     from bs4 import BeautifulSoup
-    import requests
+    import requests as req
     from splinter import Browser
     from IPython.display import display_html
     import pandas as pd
+    import time
 
     # Showing the chromdriver I'm using
-    !which chromedriver
+    # !which chromedriver
 
     # Executable path and fire up browser, headless set to True so the browser operates in the background invisible"
     executable_path = {'executable_path': '/usr/local/bin/chromedriver'}
@@ -61,6 +44,8 @@ def scrape():
     #Use splinter to navigate the site and find the image url for the current Featured Mars Image
     browser.click_link_by_partial_text('FULL IMAGE')
 
+    time.sleep(5)
+
     browser.click_link_by_partial_text('more info')
 
     html = browser.html
@@ -82,7 +67,7 @@ def scrape():
     html = browser.html
     soup = BeautifulSoup(html, 'html.parser')
 
-    mars_weather = soup.select('span', class_="css-901oao css-16my406 r-1qd0xha r-ad9z0x r-bcqeeo r-qvutc0")
+    mars_weather = soup.find("p", class_='TweetTextSize TweetTextSize--normal js-tweet-text tweet-text').text
     # Add to apps dictionary
     mission_to_mars_dict["mars_weather"] = mars_weather
 
@@ -134,11 +119,5 @@ def scrape():
     
     
     browser.quit()
-
-
-    return render_template("index.html", dict=player_dictionary)
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
-
+    print(mission_to_mars_dict)
+    return mission_to_mars_dict
